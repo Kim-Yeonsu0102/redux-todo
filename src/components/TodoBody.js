@@ -8,16 +8,17 @@ function TodoBody(props) {
   const state = useSelector((state) => state)
   const dispatch = useDispatch()
   let { id, contents, isCheck, isDone } = state.todo
-
+  isCheck = !isCheck
+  isDone = !isDone
   id={nanoid}
   return (
 
     <>
-      <ul>{
+     {
         state.todo.map((item,i) => 
           <li key={item.id}>
             <input type="checkbox" onChange={() => {
-              dispatch(checkedTodo({ isCheck}))
+              dispatch(checkedTodo({isCheck }))
             }} />
 
             {contents}
@@ -28,7 +29,7 @@ function TodoBody(props) {
 
           </li>
           )}
-      </ul>
+     
     </>
   )
 }

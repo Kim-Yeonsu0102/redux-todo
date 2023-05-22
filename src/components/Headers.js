@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { addTodo, checkedTodo, deleteTodo } from '../store'
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from "nanoid";
+import TodoBody from './TodoBody';
 
 
 
@@ -21,14 +22,17 @@ function Headers(props) {
     <div>
       
       <input type="text" placeholder='좀 되라' value={texts} onChange={(e) =>
-        state.contents = setTexts(e.target.value)}
+     { 
+        state.contents = setTexts(e.target.value)}}
       />
       <button type="submit" onClick={() => {
-
-        dispatch(addTodo({contents}))
+        console.log(texts)
+        dispatch(addTodo({contents: texts}))
       }}>추가</button>
 
-
+<ul>
+  <TodoBody/>
+</ul>
 
 
     </div>
