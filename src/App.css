@@ -1,38 +1,110 @@
+/* title */
+@font-face {
+  font-family: 'KBO-Dia-Gothic_bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* text */
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'SUITE-Regular';
+}
+
+
+
 .App {
   text-align: center;
+  width: 50%;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: 'KBO-Dia-Gothic_bold';
+  padding: 30px 0;
+  font-size: 80px;
+  color: cadetblue
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  padding: 10px;
   display: flex;
-  flex-direction: column;
+}
+
+.header form {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+.header form input {
+  width: 84%;
+  padding: 10px 5px;
+  font-size: 24px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header form button {
+  width: 12%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  background: cadetblue;
+  color: #fff;
+}
+
+
+.todoBody {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+
+}
+
+.todoBody input[type="checkbox"] {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.todoBody span {
+  display: inline-block;
+  font-size: 24px;
+  width: 80%;
+  text-align: left;
+
+}
+
+.todoBody button{
+  width: 12%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  background: rgb(187, 153, 158);
+  color: #fff;
 }

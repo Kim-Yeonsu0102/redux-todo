@@ -1,8 +1,8 @@
 /*eslint-disable*/
 import React from "react";
-import { addTodo, checkTodo, deleteTodo } from "../store";
+import { checkTodo, deleteTodo } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "nanoid";
+import "./../App.css";
 
 function TodoBody(props) {
 	const { todo } = useSelector((state) => state);
@@ -14,28 +14,28 @@ function TodoBody(props) {
 		dispatch(checkTodo(id));
 	};
 	return (
-		<>
+		<div >
 			{todo.map((item, i) => (
-				<li key={item.id}>
-					<input
-						type="checkbox"
-						onChange={(id) => onChangeHandler(item.id)} // false -> a - true ->b- false -> s - false
-					/>
+				<div key={item.id} className="todoBody">
+					<input id="check"type="checkbox" onChange={(id) => onChangeHandler(item.id)}/>
+					<label for="check"/>
 					{/* 체크박스를 누르면->체인지 이벤트가 발생하면 // 
- store의 todo.isCheck에 접근 -> dispatch(checkTodo())
-  boolean 값을 변화시킴   */}
-					{item.contents}
+							store의 todo.isCheck에 접근 -> dispatch(checkTodo())
+							boolean 값을 변화시킴   */}
+					<span style={{ textDecorationLine: item.isCheck ? 'line-through' : 'none'}}>
+						{item.contents}
+					</span>
 
 					<button
 						type="button"
 						onClick={() => {
-							dispatch(deleteTodo({ isDone }));
+							dispatch(deleteTodo(item.id));
 						}}>
 						삭제
 					</button>
-				</li>
+				</div>
 			))}
-		</>
+		</div>
 	);
 }
 

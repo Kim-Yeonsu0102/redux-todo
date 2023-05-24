@@ -18,11 +18,15 @@ const todo = createSlice({
 			state.unshift(newTodo);
 		},
 		checkTodo: (state, action) => {
-			console.log(action.payload);
-			const { id } = action.payload;
-			const findTodo = state.find((todo) => todo.id === id);
+			const  id  = action.payload;
+			const findTodo = state.find((todo) =>todo.id === id)
 			findTodo.isCheck = !findTodo.isCheck;
 		},
+		deleteTodo: (state, action) => {		
+			const id  = action.payload;
+			const findIdx = state.findIndex((todo) =>todo.id === id)
+			state.splice(findIdx,1)
+		}
 	},
 });
 

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { addTodo } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import "./../App.css";
+
 
 function Headers(props) {
 	const { todo } = useSelector((state) => state);
@@ -24,12 +26,12 @@ function Headers(props) {
 	};
 
 	return (
-		<>
+		<div className="header">
 			<form onSubmit={onClickHandler}>
 				<input type="text" placeholder="좀 되라" value={text} onChange={onChangeHandler} />
 				<button type="submit">추가</button>
 			</form>
-		</>
+		</div>
 	);
 }
 
