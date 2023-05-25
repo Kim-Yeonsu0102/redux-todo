@@ -16,6 +16,8 @@ function Headers(props) {
 	// 디스트럭쳐링 , 들어오는 값, 나가는 값이 뭔지 무슨형태인지 잘 파악하자 .
 	//필요없는건 쓰지 말자!
 
+	
+
 	const onChangeHandler = (e) => {
 		console.log(e.target.value);
 		setText(e.target.value);
