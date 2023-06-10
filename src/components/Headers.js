@@ -1,15 +1,13 @@
 /*eslint-disable*/
 import { useEffect, useState } from "react";
-import { addTodo } from "../store/todoSlice";
+import { addTodo, setTodo } from "../store/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./../App.css";
 
 function Headers(props) {
-	
 	const { todo } = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const [text, setText] = useState("");
-
 
 	//1.  온클릭, 온체인지 핸들러 바깥으로 빼기
 	// 폼타입 -> 액션이 일어날때마다 리셋 되기때문에 e.prevDefault (리셋 방지) 필요
@@ -20,10 +18,10 @@ function Headers(props) {
 	const onChangeHandler = (e) => {
 		setText(e.target.value);
 	};
+
 	const onClickHandler = (e) => {
 		e.preventDefault();
 		dispatch(addTodo({ contents: text }));
-		
 	};
 
 	return (
