@@ -26,27 +26,45 @@ const todo = createSlice({
 		},
 		deleteTodo: (state, action) => {
 			const id = action.payload;
-			const findIdx = state.findIndex((todo) => todo.id === id);
+			const findIdx = state.findIndex((todo) => todo.id === id);		
 			state.splice(findIdx, 1);
-		},
+			localStorage.removeItem("todos", JSON.stringify(state[findIdx]));
 
-		setTodo: (state, action) => {
-			
-			const prevList  = action.payload; //[ {id:~~ , contents:`~~` , isfalse:fdskljf } } ]
-		
-			
-			console.log("3",prevList)
-
-			// state.push(prevList)
 		
 		},
+
+		
 	},
 });
 
-export const { addTodo, checkTodo, deleteTodo, setTodo } = todo.actions;
+export const { addTodo, checkTodo, deleteTodo  } = todo.actions;
+
+const prevSetTodo = createSlice({
+	name: "prevSetTodo",
+	initialState:[],
+	reducers: {
+		setTodo: (state, action) => {
+			
+		let prevList  = action.payload; //[ {id:~~ , contents:`~~` , isfalse:fdskljf } ]
+			console.log("2", prevList)
+		console.log("3", )
+		// state = [{state},{...prevList}]
+		
+		
+		},
+
+	}
+})
+
+export const {setTodo} = prevSetTodo.actions
+
+
+
+
 
 export default configureStore({
 	reducer: {
 		todo: todo.reducer,
+		prevSetTodo : prevSetTodo.reducer,
 	},
 });
