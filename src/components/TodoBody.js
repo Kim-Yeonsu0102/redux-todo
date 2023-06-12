@@ -1,23 +1,56 @@
 /*eslint-disable*/
 import React, { useEffect } from "react";
-import { checkTodo, deleteTodo, setTodo } from "../store/todoSlice";
+import { addTodo,checkTodo, deleteTodo, setTodo } from "../store/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./../App.css";
 
 function TodoBody(props) {
 	const { todo } = useSelector((state) => state); //state를 바꿔야 함...
 	const dispatch = useDispatch();
+333
 	const onChangeHandler = (id) => dispatch(checkTodo(id));
 
 	useEffect(() => {
 		if (localStorage.getItem("todos")) {
-			console.log(localStorage.getItem("todos"));
-			const prevTodoListArr = JSON.parse(localStorage.getItem("todos"));
-			// const todos = localStorage.getItem("todos", JSON.stringify(state));
+			// console.log(localStorage.getItem("todos"));
+			const prevTodoListArr = JSON.parse(localStorage.getItem("todos"));		
 
-			dispatch(setTodo(prevTodoListArr));
+			const prevArr = []
+			// console.log(Array.from({...prevList}), {prevList})
+{	
+			prevTodoListArr.map((prev, i, arr)=>{
+				// return console.log("1",prev , i , arr[i])
+				// const prevTodo = [{
+				// 	id: arr[i].id,
+				// 	contents: arr[i].contents,
+				// 	isCheck: arr[i].isCheck,
+				// 	isDone: arr[i].isDone,
+				// }];// 
+
+				// prevArr.push({
+				// 	id: arr[i].id,
+				// 	contents: arr[i].contents,
+				// 	isCheck: arr[i].isCheck,
+				// 	isDone: arr[i].isDone,
+				// })
+
+				dispatch(setTodo({
+					id: arr[i].id,
+					contents: arr[i].contents,
+					isCheck: arr[i].isCheck,
+					isDone: arr[i].isDone,
+				})
+				);
+				
+			})	
+	
 		}
-	}, []);
+
+
+			// dispatch(setTodo({object:prevTodoListArr}));
+			
+		}
+	});
 
 	return (
 		<div>
@@ -37,7 +70,12 @@ function TodoBody(props) {
 							fontSize: "26px",
 							textDecoration: item.isCheck ? "line-through" : "",
 						}}>
-						{item.contents} {/* //여기가 문제임 ㅠㅠㅠㅠㅠ */}
+
+						{
+
+							item.contents
+						
+						} {/* //여기가 문제임 ㅠㅠㅠㅠㅠ */}
 					</span>
 
 					{/* 체크박스를 누르면->체인지 이벤트가 발생하면 // 

@@ -31,18 +31,14 @@ const todo = createSlice({
 		},
 
 		setTodo: (state, action) => {
-			const { prevList } = action.payload; //[ {id:~~ , contents:`~~` , isfalse:fdskljf } } ]
-			// {
-			// 	prevList.map((t, i) => {
-			// 		state.push({
-			// 			//...얘네를 헤더에서 호출해줄 변수명이 필요한데...
-			// 			id: prevList[i].id,
-			// 			contents: prevList[i].content,
-			// 			isCheck: prevList[i].isCheck,
-			// 			isDone: prevList[i].isDone,
-			// 		});
-			// 	});
-			// }
+			
+			const prevList  = action.payload; //[ {id:~~ , contents:`~~` , isfalse:fdskljf } } ]
+		
+			
+			console.log("3",prevList)
+
+			// state.push(prevList)
+		
 		},
 	},
 });
